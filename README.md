@@ -20,9 +20,9 @@ To run the algorithm:
 To produce the figures:
 
 
-   # same as above
-   python eval_results.py
-   python eval_results_percent_changes_detected.py
+    # same as above
+    python eval_results.py
+    python eval_results_percent_changes_detected.py
    
 
 # Results
