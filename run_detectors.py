@@ -1,22 +1,20 @@
-import psutil
 from time import time, strftime, gmtime
 from mmdaw_adapter import MMDAWAdapter
 
 import pathlib
 from sklearn import preprocessing
-from detectors import D3
 import pandas as pd
 from copy import deepcopy, copy
 import uuid
-from detectors import WATCH, IBDD, D3, AdwinK
+from mmdaw.baselines import WATCH, IBDD, D3, AdwinK
 from sklearn.model_selection import ParameterGrid
 from joblib import Parallel, delayed
 import numpy as np
 from itertools import permutations
-from changeds.abstract import ChangeStream
+from datasets import ChangeStream
 from tensorflow import keras
 from sklearn.preprocessing import LabelEncoder
-
+import os
 
 def preprocess(x):
     return preprocessing.minmax_scale(x)
@@ -146,7 +144,7 @@ def get_perm_for_cd(df):
     return df
 
 
-class GasSensorsFlo(ChangeStream):
+class GasSensors(ChangeStream):
     def __init__(self, preprocess=None, max_len=None):
         df = pd.read_csv("./data/gas-drift_csv.csv")
         df = get_perm_for_cd(df)
@@ -159,7 +157,7 @@ class GasSensorsFlo(ChangeStream):
         if preprocess:
             data = preprocess(data)
         self._change_points = np.diff(y, prepend=y[0]).astype(bool)
-        super(GasSensorsFlo, self).__init__(data=data, y=np.array(y))
+        super(GasSensors, self).__init__(data=data, y=np.array(y))
 
     def id(self) -> str:
         return "GasSensors"
@@ -171,7 +169,7 @@ class GasSensorsFlo(ChangeStream):
         return self._change_points[self.sample_idx]
 
 
-class MNISTFlo(ChangeStream):
+class MNIST(ChangeStream):
     def __init__(self, preprocess=None, max_len=None):
         (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
         x_train = np.reshape(
@@ -194,7 +192,7 @@ class MNISTFlo(ChangeStream):
         if preprocess:
             data = preprocess(data)
         self._change_points = np.diff(y, prepend=y[0]).astype(bool)
-        super(MNISTFlo, self).__init__(data=data, y=np.array(y))
+        super(MNIST, self).__init__(data=data, y=np.array(y))
 
     def id(self) -> str:
         return "MNIST"
@@ -206,7 +204,7 @@ class MNISTFlo(ChangeStream):
         return self._change_points[self.sample_idx]
 
 
-class FashionMNISTFlo(ChangeStream):
+class FashionMNIST(ChangeStream):
     def __init__(self, preprocess=None, max_len=None):
         (x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
         x_train = np.reshape(
@@ -230,7 +228,7 @@ class FashionMNISTFlo(ChangeStream):
         if preprocess:
             data = preprocess(data)
         self._change_points = np.diff(y, prepend=y[0]).astype(bool)
-        super(FashionMNISTFlo, self).__init__(data=data, y=y)
+        super(FashionMNIST, self).__init__(data=data, y=y)
 
     def id(self) -> str:
         return "FMNIST"
@@ -242,7 +240,7 @@ class FashionMNISTFlo(ChangeStream):
         return self._change_points[self.sample_idx]
 
 
-class HARFlo(ChangeStream):
+class HAR(ChangeStream):
     def __init__(self, preprocess=None, max_len=None):
         har_data_dir = "data/har"
         test = pd.read_csv(os.path.join(har_data_dir, "test.csv"))
@@ -266,7 +264,7 @@ class HARFlo(ChangeStream):
             data = preprocess(data)
 
         self._change_points = np.diff(y, prepend=y[0]).astype(bool)
-        super(HARFlo, self).__init__(data=data, y=y)
+        super(HAR, self).__init__(data=data, y=y)
 
     def id(self) -> str:
         return "HAR"
@@ -278,7 +276,7 @@ class HARFlo(ChangeStream):
         return self._change_points[self.sample_idx]
 
 
-class CIFAR10Flo(ChangeStream):
+class CIFAR10(ChangeStream):
     def __init__(self, preprocess=None, max_len=None):
         (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
         x_train = x_train.dot([0.299, 0.587, 0.114])
@@ -304,7 +302,7 @@ class CIFAR10Flo(ChangeStream):
         if preprocess:
             data = preprocess(data)
         self._change_points = np.diff(y, prepend=y[0]).astype(bool)
-        super(CIFAR10Flo, self).__init__(data=data, y=y)
+        super(CIFAR10, self).__init__(data=data, y=y)
 
     def id(self) -> str:
         return "CIFAR10"
@@ -318,25 +316,13 @@ class CIFAR10Flo(ChangeStream):
 
 if __name__ == "__main__":
     parameter_choices = {
-        # MMDAWAdapter: {"gamma": [1], "alpha": [ .1]},
         MMDAWAdapter: {
             "gamma": [1],
             "alpha": [
-                1e-11,
-                1e-10,
-                1e-9,
-                1e-8,
-                1e-7,
-                1e-6,
-                1e-5,
-                1e-4,
                 1e-3,
                 1e-2,
                 1e-1,
                 0.2,
-                0.3,
-                0.4,
-                0.5,
             ],
         },
         AdwinK: {"k": [0.01, 0.02, 0.05, 0.1, 0.2], "delta": [0.05]},
@@ -366,23 +352,13 @@ if __name__ == "__main__":
     max_len = None
     n_reps = 1
 
-    datasets = [
-        GasSensorsFlo(preprocess=preprocess, max_len=max_len),
-        MNISTFlo(preprocess=preprocess, max_len=max_len),
-        FashionMNISTFlo(preprocess=preprocess, max_len=max_len),
-        HARFlo(preprocess=preprocess, max_len=max_len),
-        CIFAR10Flo(preprocess=preprocess, max_len=max_len)
-        # LED(
-        #    n_per_concept=n_per_concept, num_concepts=n_concepts, preprocess=preprocess
-        # ),
-        # RBF(
-        #    n_per_concept=n_per_concept, num_concepts=n_concepts, preprocess=preprocess
-        # ),
-        # RandomOrderCIFAR10(num_concepts=n_concepts, preprocess=preprocess),
+    datasets = [ # uncomment to run with different data sets
+        GasSensors(preprocess=preprocess, max_len=max_len),
+        #MNIST(preprocess=preprocess, max_len=max_len),
+        #FashionMNIST(preprocess=preprocess, max_len=max_len),
+        #HAR(preprocess=preprocess, max_len=max_len),
+        #CIFAR10(preprocess=preprocess, max_len=max_len)
     ]
-
-    # experiment = Experiment(name=ename, configurations=algorithms, datasets=datasets, reps=n_reps)
-    # experiment.run(warm_start=100)
 
     ex = Experiment(algorithms, datasets, reps=n_reps)
 

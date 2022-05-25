@@ -1,7 +1,7 @@
 import numpy as np
 
 
-from detectors import DriftDetector
+from mmdaw.abstract import DriftDetector
 
 from mmdaw.bucket_stream import BucketStream
 from mmdaw.mmd import MMD
