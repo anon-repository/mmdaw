@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,D3,"$\omega = 500, \rho = 0.1, \tau = 0.8, d = 1$",GasSensors,"[1541, 4467, 6300, 8865, 11874]",[],"[550, 601, 1153, 1705, 1756, 1807, 1858, 4915, 4966, 6520, 8074, 8125, 8176, 11734, 11785, 12838, 12889, 12940]",False,0.7296292781829834

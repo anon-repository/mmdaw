@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,IBDD,"$\omega = 300, m = 100$",GasSensors,"[2465, 4401, 6042, 7875, 10884]",[],[],False,10.193302631378174

@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,AdwinK,"$k = 0.2, \delta = 0.05$",MNIST,"[6776, 13917, 21794, 28619, 35609, 42902, 49726, 56629, 63587]",[],"[7423, 36863]",False,4457.203049182892

@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,WATCH,"$\kappa = 100, \mu = 2000, \epsilon = 3, \omega = 1000$",HAR,"[1306, 3083, 5027, 6571, 8477]",[],"[1899, 2899, 3899, 4899, 5899, 6899, 7899, 8899, 9899]",False,2.715533971786499

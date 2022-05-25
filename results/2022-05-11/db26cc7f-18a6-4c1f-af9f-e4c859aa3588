@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,WATCH,"$\kappa = 100, \mu = 1000, \epsilon = 3, \omega = 1000$",GasSensors,"[1733, 3669, 5310, 8319, 11245]",[],"[1899, 2899, 3899, 4899, 5899, 6899, 7899, 8899, 9899, 10899, 11899, 12899]",False,1.1118483543395996

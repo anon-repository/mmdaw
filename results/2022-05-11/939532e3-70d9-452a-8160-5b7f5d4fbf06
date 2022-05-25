@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,D3,"$\omega = 500, \rho = 0.3, \tau = 0.7, d = 1$",HAR,"[1306, 3083, 5027, 6571, 8477]",[],"[1151, 1302, 1453, 1604, 1755, 3409, 3560, 4713, 5365, 5516, 6669, 6820, 6971, 8124, 8776, 8927, 9579]",False,1.7329800128936768

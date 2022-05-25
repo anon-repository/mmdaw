@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,D3,"$\omega = 100, \rho = 0.3, \tau = 0.8, d = 1$",MNIST,"[7777, 14601, 21504, 27817, 34693, 41683, 48976, 55934, 62759]",[],"[7806, 7837, 14635, 14666]",False,4.596428632736206

@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,MMDAW,$\alpha = 0.1$,GasSensors,"[1733, 3669, 5310, 8319, 11245]","[2047, 6655, 8191, 10239, 11263]","[2302, 6790, 8502, 10484, 12171]",False,25.32790446281433

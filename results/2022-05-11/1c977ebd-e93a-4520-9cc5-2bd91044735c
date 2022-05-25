@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,MMDAW,$\alpha = 0.001$,CIFAR10,"[5900, 11900, 17900, 23900, 29900, 35900, 41900, 47900, 53900]","[8191, 32767]","[11012, 40800]",False,281.7354464530945

@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,AdwinK,"$k = 0.2, \delta = 0.05$",GasSensors,"[2909, 5835, 8400, 10233, 11874]",[],"[543, 1215, 1535, 1919, 1983, 2047, 2239, 2367, 2559, 3039, 3071, 4095, 4607, 4671, 7167, 8575, 9727]",False,120.24940848350525

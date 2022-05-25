@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,IBDD,"$\omega = 300, m = 100$",HAR,"[1844, 3566, 4972, 6878, 8422]",[],[],False,30.183133363723755

@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,AdwinK,"$k = 0.2, \delta = 0.05$",CIFAR10,"[5900, 11900, 17900, 23900, 29900, 35900, 41900, 47900, 53900]",[],"[6399, 6527, 6655, 6911, 7167, 13055, 18943, 19199, 20479, 26367, 49151, 56319, 58879]",False,4829.022550344467

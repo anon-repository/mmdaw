@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,MMDAW,$\alpha = 1e-10$,HAR,"[1806, 3212, 5156, 6933, 8655]","[2047, 3327, 6911]","[2295, 3568, 7218]",False,21.871885538101196

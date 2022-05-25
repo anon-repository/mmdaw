@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,MMDAW,$\alpha = 1e-07$,MNIST,"[6858, 13683, 20673, 26986, 34279, 42156, 48980, 55856, 62997]","[34815, 43007]","[36597, 45915]",False,260.12642765045166

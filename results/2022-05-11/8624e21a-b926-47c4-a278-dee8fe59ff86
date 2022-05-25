@@ -1,0 +1,2 @@
+,algorithm,config,dataset,actual_cps,detected_cps,detected_cps_at,timeout,runtime
+0,D3,"$\omega = 100, \rho = 0.5, \tau = 0.7, d = 1$",CIFAR10,"[5900, 11900, 17900, 23900, 29900, 35900, 41900, 47900, 53900]",[],"[655, 5958, 11968, 18887, 18938, 20403, 23888, 27373, 33383, 42928, 58028, 58281]",False,14.303093910217285
